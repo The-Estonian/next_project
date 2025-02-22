@@ -1,11 +1,17 @@
+'use client';
+
+import { useState } from 'react';
 import styles from './page.module.css';
 
-const Home: React.FC<Props> = ({ name }) => {
-  return <div className={styles.page}>Hey, {name}</div>;
+import Home from './components/Welcome';
+
+const App: React.FC = () => {
+  const [message, setMessage] = useState<string>('Welcome to Next.js!');
+  return (
+    <div className={styles.page}>
+      <Home message={message} name='New User' />
+    </div>
+  );
 };
 
-interface Props {
-  name: string;
-}
-
-export default Home;
+export default App;
