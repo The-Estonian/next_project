@@ -1,0 +1,32 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  text-align: center;
+
+  &_title{
+    padding: 0.5rem;
+  }
+
+  &_input {
+    width: 40%;
+    margin: auto;
+    padding: 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  &_submit {
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 15%;
+    margin: 1rem auto;
+    text-align: center;
+
+    &:hover {
+      background: black;
+      color: white;
+    }
+  }
+}
