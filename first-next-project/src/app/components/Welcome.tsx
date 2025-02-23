@@ -9,7 +9,7 @@ const Home: React.FC<Props> = ({ message, name }) => {
 };
 
 interface Props {
-  message: string;
+  message: string | null;
   name: string;
 }
 
