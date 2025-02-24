@@ -5,12 +5,16 @@ import styles from './page.module.css';
 
 import Home from './components/Welcome';
 import SendToBackend from './components/SendToBackend';
+import RetrieveFromBackend from './components/RetrieveFromBackend';
 
 const App: React.FC = () => {
   const [message, setMessage] = useState<string | null>(null);
   const [showGreeting, setShowGreeting] = useState<boolean>(false);
 
   const [showSendDataToBackend, setShowSendDataToBackend] =
+    useState<boolean>(false);
+
+  const [showRetrieveDataFromBackend, setShowRetrieveDataFromBackend] =
     useState<boolean>(false);
 
   const handleGreetingSwitch = () => {
@@ -21,6 +25,10 @@ const App: React.FC = () => {
 
   const handleSendDataToBackendSwitch = () => {
     setShowSendDataToBackend(!showSendDataToBackend);
+  };
+
+  const handleRetrieveDataFromBackendSwitch = () => {
+    setShowRetrieveDataFromBackend(!showRetrieveDataFromBackend);
   };
 
   const requestHello = async () => {
@@ -50,14 +58,21 @@ const App: React.FC = () => {
       )}
       {showGreeting && <Home message={message} name='New User' />}
       {showSendDataToBackend && <SendToBackend />}
+      {showRetrieveDataFromBackend && <RetrieveFromBackend />}
       <span className={styles.greetingButton} onClick={handleHelloFetch}>
-        {!showGreeting ? 'Fetch Greeting!' : 'Hide Greeting!'}
+        {!showGreeting ? 'Show Trigger1' : 'Hide Trigger1'}
       </span>
       <span
         className={styles.sendToBackendButton}
         onClick={handleSendDataToBackendSwitch}
       >
-        {!showSendDataToBackend ? 'Send to backend!' : 'Hide Send to backend!'}
+        {!showSendDataToBackend ? 'Show Trigger2' : 'Hide Trigger2'}
+      </span>
+      <span
+        className={styles.retrieveFromBackendButton}
+        onClick={handleRetrieveDataFromBackendSwitch}
+      >
+        {!showSendDataToBackend ? 'Show Trigger3' : 'Hide Trigger3'}
       </span>
     </div>
   );
