@@ -15,4 +15,14 @@
             color: white;
         }
     }
+    &_pictures {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+        &_image {
+            margin: 0.08rem;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+    }
 }

@@ -1,10 +1,8 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-    const portfolioItems = [
-        { id: 1, title: 'Project One' },
-        { id: 2, title: 'Project Two' },
-    ];
+    const response = await fetch("https://picsum.photos/v2/list?page=1&limit=9")
+    const data = await response.json()
 
-    return NextResponse.json(portfolioItems);
+    return NextResponse.json(data);
 }
