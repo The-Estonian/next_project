@@ -9,6 +9,7 @@ const Navbar = () => {
     return <div className={styles.navbar}>
         <Link href="/" className={pathname === '/' ? `${styles.navbar_button} ${styles.active}` : styles.navbar_button}>Home</Link>
         <Link href="/portfolio" className={pathname === '/portfolio' ? `${styles.navbar_button} ${styles.active}` : styles.navbar_button}>Portfolio</Link>
+        <Link href="/users" className={pathname === '/users' ? `${styles.navbar_button} ${styles.active}` : styles.navbar_button}>Users</Link>
     </div>
 }
 
