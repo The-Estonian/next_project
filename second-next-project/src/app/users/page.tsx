@@ -24,6 +24,7 @@ const Users = () => {
         fetchAllUsers()
     }, [])
 
+
     const registerNewUserHandler = async () => {
         try {
             const response = await fetch("/api/users", {
