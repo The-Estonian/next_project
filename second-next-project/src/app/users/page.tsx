@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 
 import styles from "./users.module.scss"
-import { json } from "stream/consumers";
 
 
 
@@ -13,10 +12,14 @@ const Portfolio = () => {
     const [firstName, setFirstName] = useState<string>("")
     const [lastName, setLastName] = useState<string>("")
 
+    const [error, setError] = useState<string | undefined>(undefined)
+
     useEffect(() => {
         const fetchAllUsers = async () => {
             const response = await fetch("/api/users")
             const data = await response.json()
+            console.log(data);
+            
             setUsers(data);
         }
         fetchAllUsers()
@@ -34,14 +37,17 @@ const Portfolio = () => {
             })
             if (response.ok) {
                 console.log("User received!");
+                setError(undefined)
                 setUsername("")
                 setFirstName("")
                 setLastName("")
             } else {
-                console.error("Failed to register user:", response.statusText);
+                console.error("Failed to register user: ", response.statusText);
+                setError("Failed to register user: " + response.statusText)
             }
         } catch (e) {
             console.log("Error with new user registration method!", e);
+            setError("Error with new user registration method!" + e)
         } 
     }
     return (
@@ -62,6 +68,7 @@ const Portfolio = () => {
                     <span>Last Name</span>
                     <input value={lastName} onChange={(e) => setLastName(e.target.value)} type="text"></input>
                     <span className={styles.users_add_new_user_input_container_submit} onClick={registerNewUserHandler}>Submit</span>
+                    {error && error}
                 </div>
             </div>
         </div>
