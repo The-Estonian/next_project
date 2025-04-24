@@ -1,41 +1,51 @@
 import { NextResponse } from 'next/server';
-let index = 1
-const tempData: UserStruct[] = [
-    // {
-    //     id: 1,
-    //     username: "Bobberino",
-    //     firstName: "Bob",
-    //     lastName: "Marley"
-    // },
-    // { 
-    //     id: 2,
-    //     username: "Markerino",
-    //     firstName: "Mark",
-    //     lastName: "Zuk"
-    // }
-]
+import db from '@/lib/knex.node';
+
+// let index = 1
+// const tempData: UserStruct[] = [
+//     {
+//         id: 1,
+//         username: "Bobberino",
+//         firstName: "Bob",
+//         lastName: "Marley"
+//     },
+//     { 
+//         id: 2,
+//         username: "Markerino",
+//         firstName: "Mark",
+//         lastName: "Zuk"
+//     }
+// ]
 
 export async function GET() {
-    return NextResponse.json(tempData);
+    try {
+        const users = await db('users').select('*');
+        return NextResponse.json(users);
+    } catch (error) {
+        console.log(error);
+        
+    }
 }
 
 export async function POST(request: Request) {
     const body = await request.json();
-    tempData.push(
-        { 
-            id: index,
+    try {
+        await db("users").insert({
             username: body.username,
-            firstName: body.firstName,
-            lastName: body.lastName
+            firstname: body.firstName,
+            lastname: body.lastName
         })
-    index++
-    return NextResponse.json("User registered!");
+        return NextResponse.json("User registered!");
+    } catch (e) {
+        console.log(e);
+        
+    }
 }
 
 
-type UserStruct = {
-    id: number;
-    username: string;
-    firstName: string;
-    lastName: string;
-};
+// type UserStruct = {
+//     id: number;
+//     username: string;
+//     firstName: string;
+//     lastName: string;
+// };

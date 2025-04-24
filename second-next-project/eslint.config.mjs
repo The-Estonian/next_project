@@ -14,7 +14,6 @@ const eslintConfig = [
     {
         files: ['**/*.ts', '**/*.tsx'],
         rules: {
-            // 2-space indentation
             indent: ['error', 4, { SwitchCase: 1 }],
         },
     },
