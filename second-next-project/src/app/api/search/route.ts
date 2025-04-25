@@ -8,7 +8,7 @@ export async function POST(request: Request) {
         return NextResponse.json(users);
     } catch (e) {
         console.log(e);
-        
+        return NextResponse.json({error:"Error connecting to the postgres"});
     }
 }
 

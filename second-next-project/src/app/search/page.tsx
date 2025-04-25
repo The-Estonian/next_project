@@ -8,9 +8,18 @@ import styles from "./search.module.scss"
 
 const Search = () => {
     const [searchResults, setSearchResults] = useState<UserStruct[]>([]);
+    const [error, setError] = useState<string | undefined>(undefined)
 
     useEffect(() => {
-        const sub = searchResult$.subscribe(setSearchResults);
+        const sub = searchResult$.subscribe((res: any) => {
+            if ("error" in res) {
+                setError(res.error)
+                setSearchResults([])
+            } else {
+                setError(undefined)
+                setSearchResults(res)
+            }
+        });
         return () => sub.unsubscribe();
     }, []);
     
@@ -26,6 +35,8 @@ const Search = () => {
                     <li key={user.id}>{user.username}</li>
                 ))}
             </ul>
+            {error && <p>{error}</p>
+            }
         </div>
     )
 }
