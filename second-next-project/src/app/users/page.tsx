@@ -16,8 +16,13 @@ const Users = () => {
 
     const fetchAllUsers = async () => {
         const response = await fetch("/api/users")
-        const data = await response.json()            
-        setUsers(data);
+        const data = await response.json()   
+        if (!data.error) {
+            setError("")
+            setUsers(data);
+        } else {
+            setError(data.error)
+        }
     }
 
     useEffect(() => {
@@ -83,7 +88,7 @@ const Users = () => {
         <div className={styles.users}>
             <h3>Users</h3>
             {users && <div className={styles.users_container}>
-                {users.map((user) => {
+                {!error && users.map((user) => {
                     return <div key={user.id} className={styles.users_container_user}>
                         <span>
                             UserId: {user.id}

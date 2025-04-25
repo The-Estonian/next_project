@@ -1,29 +1,13 @@
 import { NextResponse } from 'next/server';
 import db from '@/lib/knex.node';
 
-// let index = 1
-// const tempData: UserStruct[] = [
-//     {
-//         id: 1,
-//         username: "Bobberino",
-//         firstName: "Bob",
-//         lastName: "Marley"
-//     },
-//     { 
-//         id: 2,
-//         username: "Markerino",
-//         firstName: "Mark",
-//         lastName: "Zuk"
-//     }
-// ]
-
 export async function GET() {
     try {
         const users = await db('users').select('*');
         return NextResponse.json(users);
     } catch (error) {
         console.log(error);
-        
+        return NextResponse.json({error:"Error connecting to the postgres"});
     }
 }
 
@@ -41,11 +25,3 @@ export async function POST(request: Request) {
         
     }
 }
-
-
-// type UserStruct = {
-//     id: number;
-//     username: string;
-//     firstName: string;
-//     lastName: string;
-// };
