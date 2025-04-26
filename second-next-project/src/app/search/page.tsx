@@ -11,6 +11,7 @@ const Search = () => {
     const [error, setError] = useState<string | undefined>(undefined)
 
     useEffect(() => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const sub = searchResult$.subscribe((res: any) => {
             if ("error" in res) {
                 setError(res.error)

@@ -1,31 +1,36 @@
 {
-  "name": "second-project",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "dotenv": "^16.5.0",
-    "knex": "^3.1.0",
-    "next": "15.3.1",
-    "pg": "^8.15.5",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "rxjs": "^7.8.2",
-    "sass": "^1.86.3",
-    "second-project": "file:"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.3.1",
-    "typescript": "^5"
-  }
+    "name": "second-project",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "migrate:make": "knex migrate:make",
+        "migrate:latest": "knex migrate:latest",
+        "migrate:rollback": "knex migrate:rollback"
+    },
+    "dependencies": {
+        "dotenv": "^16.5.0",
+        "knex": "^3.1.0",
+        "next": "15.3.1",
+        "pg": "^8.15.5",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "rxjs": "^7.8.2",
+        "sass": "^1.86.3",
+        "second-project": "file:",
+        "ts-node": "^10.9.2"
+    },
+    "devDependencies": {
+        "@eslint/eslintrc": "^3",
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "eslint": "^9",
+        "eslint-config-next": "15.3.1",
+        "typescript": "^5"
+    }
 }
